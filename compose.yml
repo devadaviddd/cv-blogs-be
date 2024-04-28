@@ -1,0 +1,32 @@
+version: '3.8'
+services:
+  database:
+    env_file:
+      - ./database/.env
+    build:
+      context: ./database
+      dockerfile: Dockerfile
+    ports:
+      - '3306:3306'
+    volumes:
+      - database-data:/var/lib/mysql
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  backend:
+    env_file:
+      - ./backend/.env
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - '8000:8000'
+    restart: always
+    depends_on:
+      - database
+
+volumes:
+  database-data: ~
+
+networks:
+  default:
+    name: backend-net
