@@ -1,8 +1,9 @@
 version: '3.8'
+
 services:
   database:
     env_file:
-      - ./database/.env
+      - .env
     build:
       context: ./database
       dockerfile: Dockerfile
@@ -14,7 +15,7 @@ services:
 
   backend:
     env_file:
-      - ./backend/.env
+      - .env
     build:
       context: ./backend
       dockerfile: Dockerfile
