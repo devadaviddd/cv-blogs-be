@@ -6,7 +6,8 @@ pipeline {
         echo 'In Build Stage'
         echo 'Build Stage Path'
         sh 'pwd'
-        sh 'ls -la'
+        echo 'Load .env file'
+        sh 'sh script.sh'
       }
     }
   }
