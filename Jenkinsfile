@@ -8,6 +8,8 @@ pipeline {
         sh 'pwd'
         echo 'Load .env file'
         sh 'sh script.sh'
+        echo 'Docker build'
+        sh 'docker-compose up --build -d'
       }
     }
   }
