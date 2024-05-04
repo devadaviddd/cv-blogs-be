@@ -1,7 +1,5 @@
-node {
-  stage('Build') {
-    step {
-      pwd()
-    }
+stage('build') {
+  steps {
+    pwd()
   }
 }
