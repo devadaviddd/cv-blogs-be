@@ -9,7 +9,7 @@ pipeline {
         echo 'Load .env file'
         sh 'sh script.sh'
         echo 'Docker build'
-        sh 'sudo docker-compose up --build -d'
+        sh 'docker ps'
       }
     }
   }
