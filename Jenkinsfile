@@ -1,5 +1,5 @@
-stage('build') {
-  steps {
-    pwd
+node {
+  stage('HelloWorld') {
+    echo 'Hello World'
   }
 }
