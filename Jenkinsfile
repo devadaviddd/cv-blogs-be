@@ -4,7 +4,8 @@ pipeline {
     stage('Build') {
       steps {
         echo 'In Build Stage'
-        sh 'script.sh'
+        pwd
+        sh 'ls -la'
       }
     }
   }
