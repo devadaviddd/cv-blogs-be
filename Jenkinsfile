@@ -2,8 +2,10 @@ pipeline {
   agent any
   stages{
     stage('Build') {
-      echo 'In Build Stage'
-      sh 'script.sh'
+      steps {
+        echo 'In Build Stage'
+        sh 'script.sh'
+      }
     }
   }
 }
