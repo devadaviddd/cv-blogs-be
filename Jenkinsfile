@@ -10,8 +10,7 @@ pipeline {
         sh 'sh script.sh'
         echo 'Get Github Env Variables'
         sh 'printenv'
-        echo $GIT_DATABASE_URL
-        echo $DATABASE_URL       
+        sh "echo ${env.BRANCH_NAME}"
         echo 'Docker build'
         sh 'docker-compose up --build -d'
       }
