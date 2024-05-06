@@ -3,28 +3,32 @@ services:
     env_file:
       - .env
     build:
-      context: ./database
+      context: ./prisma/database
       dockerfile: Dockerfile
     ports:
       - '3306:3306'
     volumes:
       - database-data:/var/lib/mysql
-      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./prisma/database/init.sql:/docker-entrypoint-initdb.d/init.sql
 
   backend:
     env_file:
-      - .env
+      - ./backend/.env
     build:
       context: ./backend
       dockerfile: Dockerfile
     ports:
       - '8000:8000'
     restart: always
+    volumes:
+      - ./prisma:/app/prisma
+      - ./backend/src:/app/src
     depends_on:
       - database
 
 volumes:
   database-data: ~
+
 
 networks:
   default:
