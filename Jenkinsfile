@@ -13,6 +13,8 @@ pipeline {
         sh 'sh script.sh'
         echo 'Docker build'
         sh 'docker-compose up --build -d'
+        echo 'DB migration'
+        sh 'npx prisma db push'
       }
     }
   }
