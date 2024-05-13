@@ -12,14 +12,16 @@ model Post {
   image       String @db.VarChar(255)
   title       String @db.Text
   description String @db.Text
-  author User @relation(fields: [authorId], references: [uid])
-  authorId String
+  authorId    String
+  author      User   @relation(fields: [authorId], references: [uid])
+
+  @@index([authorId], map: "Post_authorId_fkey")
 }
 
 model User {
-  uid String @id 
-  email String @db.VarChar(255) @unique
+  uid         String @id
+  email       String @unique @db.VarChar(255)
   displayName String @db.VarChar(255)
-  photoURL String @db.Text
-  posts Post[]
+  photoURL    String @db.Text
+  posts       Post[]
 }

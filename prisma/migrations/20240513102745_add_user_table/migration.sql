@@ -1,23 +1,3 @@
-/*
-  Warnings:
-
-  - You are about to drop the `posts` table. If the table is not empty, all the data it contains will be lost.
-
-*/
--- DropTable
-DROP TABLE `posts`;
-
--- CreateTable
-CREATE TABLE `Post` (
-    `id` INTEGER NOT NULL AUTO_INCREMENT,
-    `image` VARCHAR(255) NOT NULL,
-    `title` TEXT NOT NULL,
-    `description` TEXT NOT NULL,
-    `authorId` VARCHAR(191) NOT NULL,
-
-    PRIMARY KEY (`id`)
-) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-
 -- CreateTable
 CREATE TABLE `User` (
     `uid` VARCHAR(191) NOT NULL,
