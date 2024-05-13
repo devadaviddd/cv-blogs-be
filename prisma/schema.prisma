@@ -7,9 +7,19 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model posts {
+model Post {
   id          Int    @id @default(autoincrement())
   image       String @db.VarChar(255)
   title       String @db.Text
   description String @db.Text
+  author User @relation(fields: [authorId], references: [uid])
+  authorId String
+}
+
+model User {
+  uid String @id 
+  email String @db.VarChar(255) @unique
+  displayName String @db.VarChar(255)
+  photoURL String @db.Text
+  posts Post[]
 }

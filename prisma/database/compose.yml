@@ -10,12 +10,9 @@ services:
       - '3306:3306'
     volumes:
       - database-data:/var/lib/mysql
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      # - ./init.sql:/docker-entrypoint-initdb.d/init.sql
 
 volumes:
   database-data: ~
 
-networks:
-  default:
-    name: backend-net
-    external: true
+
