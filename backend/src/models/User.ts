@@ -1,8 +1,9 @@
 import { Post } from "./Post"
 
 export interface User {
-  id: number
+  uid: string
   email: string
-  name: string | null
-  posts: Post[]
+  displayName: string
+  photoURL: string
+  posts?: Post[] 
 }

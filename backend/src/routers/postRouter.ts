@@ -1,24 +1,23 @@
 import express from 'express'
+import multer from 'multer'
 import { PostController } from '../controllers/postController'
-import { Prisma } from '@prisma/client'
+
 const postRouter = express.Router()
+const upload = multer({ dest: 'storage/' })
 
 postRouter.get('/', async (req, res) => {
   const postController = new PostController(req, res)
-  try {
-    await postController.getAllPostsApi()
-  } catch (error) {
-    console.error(error)
+  await postController.getAllPostsApi()
+})
 
-    if (error instanceof Prisma.PrismaClientKnownRequestError) {
-      return res.status(500).json({
-        message: error.meta!.cause,
-      })
-    }
-    return res.status(500).json({
-      message: 'Unknown Error',
-    })
-  }
+postRouter.post('/simple', async (req, res) => {
+  const postController = new PostController(req, res)
+  await postController.createSimplePostApi()
+})
+
+postRouter.put('/content/:id', upload.single('content'), async (req, res) => {
+  const postController = new PostController(req, res)
+  await postController.updatePostContentApi()
 })
 
 export default postRouter

@@ -8,12 +8,13 @@ datasource db {
 }
 
 model Post {
-  id          Int    @id @default(autoincrement())
-  image       String @db.VarChar(255)
-  title       String @db.Text
-  description String @db.Text
+  id          Int     @id @default(autoincrement())
+  image       String? @db.VarChar(255)
+  title       String  @db.Text
+  description String  @db.Text
   authorId    String
-  author      User   @relation(fields: [authorId], references: [uid])
+  content     String? @db.Text
+  author      User    @relation(fields: [authorId], references: [uid])
 
   @@index([authorId], map: "Post_authorId_fkey")
 }

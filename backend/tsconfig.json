@@ -1,13 +1,17 @@
 {
   "compilerOptions": {
-    "module": "CommonJS",
-    "moduleResolution": "node",
-    "pretty": true,
-    "sourceMap": true,
-    "target": "ES6",
-    "outDir": "./dist",
-    "esModuleInterop": true
+    "target": "ESNext",
+    "module": "ESNext",
+    "outDir": "dist",
+    "rootDir": "src",
+    "strict": true,
+    "esModuleInterop": true,
+    "moduleResolution": "Node",
+
   },
-  "include": ["src/**/*.ts"],
-  "exclude": ["node_modules"]
+  "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node",
+  },
+  "include": ["src"],
 }
